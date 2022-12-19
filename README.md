@@ -18,3 +18,6 @@ Daftar Kode Dosen :
 [Dokumen Standar](https://drive.google.com/file/d/1znDqT855ytx6fM5o4BQliHlOqEwcgtbi/view?usp=sharing)
 
 [Point Penilaian Lam Infokom ada di Halaman 65](https://drive.google.com/file/d/1iOo-fK7wDI6ft_pv80YnKN4AovC6NMo7/view?usp=sharing)
+
+## Kriteria
+[Penelitian](penelitian)

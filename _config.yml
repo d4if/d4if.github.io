@@ -3,7 +3,7 @@ plugins:
 - jekyll-remote-theme # add this line to the plugins list if you already have one
 
 title: Public Repository
-description: Knowledge Sharing Public Repository on Intellegence
+description: Knowledge Sharing Public Repository on Informatics
 
 show_downloads: true
 

@@ -20,4 +20,5 @@ Daftar Kode Dosen :
 [Point Penilaian Lam Infokom ada di Halaman 65](https://drive.google.com/file/d/1iOo-fK7wDI6ft_pv80YnKN4AovC6NMo7/view?usp=sharing)
 
 ## Kriteria
+[Pendidikan](pendidikan)
 [Penelitian](penelitian)

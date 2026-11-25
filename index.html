@@ -129,14 +129,29 @@
       <ol class="sign-guide">
         <li class="card stack guide-item">
           <div class="guide-head">
-            <h3>1. Unduh atau Kompilasi Binary <code>sign</code></h3>
-            <a class="button secondary" href="https://github.com/d4if/sign/releases" target="_blank" rel="noopener noreferrer">Unduh Rilis</a>
+            <h3>1. Pasang CLI <code>sign</code> di Laptop</h3>
+            <a class="button secondary" href="https://github.com/d4if/sign/releases" target="_blank" rel="noopener noreferrer">Unduh Manual</a>
           </div>
-          <p>Ambil binary sesuai sistem operasi (Linux, Windows, atau macOS) dari halaman GitHub Releases, atau kompilasi dari source Rust:</p>
-          <div class="cmd-block">
-            <pre class="cli-snippet"><code>git clone https://github.com/d4if/sign.git &amp;&amp; cd sign &amp;&amp; cargo build --release</code></pre>
-            <button type="button" class="ghost copy-btn" data-copy-text="git clone https://github.com/d4if/sign.git &amp;&amp; cd sign &amp;&amp; cargo build --release">Salin</button>
+          <p>Jalankan satu baris perintah berikut sesuai sistem operasi Anda untuk mengunduh binary resmi, memverifikasi checksum SHA-256, dan memasangnya langsung tanpa perlu kompilasi.</p>
+
+          <div class="install-grid">
+            <div class="stack install-option">
+              <span class="install-label">macOS &amp; Linux (Terminal / Shell)</span>
+              <div class="cmd-block">
+                <pre class="cli-snippet"><code>curl -fsSL https://repo.if.ulbi.ac.id/install.sh | sh</code></pre>
+                <button type="button" class="ghost copy-btn" data-copy-text="curl -fsSL https://repo.if.ulbi.ac.id/install.sh | sh">Salin</button>
+              </div>
+            </div>
+
+            <div class="stack install-option">
+              <span class="install-label">Windows (PowerShell)</span>
+              <div class="cmd-block">
+                <pre class="cli-snippet"><code>irm https://repo.if.ulbi.ac.id/install.ps1 | iex</code></pre>
+                <button type="button" class="ghost copy-btn" data-copy-text="irm https://repo.if.ulbi.ac.id/install.ps1 | iex">Salin</button>
+              </div>
+            </div>
           </div>
+          <p class="muted field-note">Setelah terpasang, cek kesiapan CLI dengan menjalankan <code>sign --version</code>.</p>
         </li>
 
         <li class="card stack guide-item">

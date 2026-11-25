@@ -226,6 +226,21 @@
     font-size: 0.9rem;
 }
 
+.install-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.85rem;
+}
+
+.install-option {
+    gap: 0.35rem;
+}
+
+.install-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
 .doc-list {
     display: flex;
     flex-direction: column;

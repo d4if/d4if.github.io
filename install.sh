@@ -109,8 +109,24 @@ echo "Berhasil memasang sign ke: $INSTALL_DIR/sign"
 case ":$PATH:" in
     *":$INSTALL_DIR:"*) ;;
     *)
-        echo ""
-        echo "Tambahkan folder ini ke PATH shell Anda jika perintah 'sign' belum dikenali:"
-        echo "  export PATH=\"$INSTALL_DIR:\$PATH\""
+        PROFILE=""
+        if [ -n "${ZSH_VERSION:-}" ] || [ "${SHELL:-}" = "/bin/zsh" ] || [ -f "$HOME/.zshrc" ]; then
+            PROFILE="$HOME/.zshrc"
+        elif [ -f "$HOME/.bashrc" ]; then
+            PROFILE="$HOME/.bashrc"
+        elif [ -f "$HOME/.profile" ]; then
+            PROFILE="$HOME/.profile"
+        fi
+        EXPORT_LINE="export PATH=\"$INSTALL_DIR:\$PATH\""
+        if [ "${SIGN_NO_MODIFY_PATH:-0}" != "1" ] && [ -n "$PROFILE" ]; then
+            if ! grep -Fq "$INSTALL_DIR" "$PROFILE" 2>/dev/null; then
+                printf '\n%s\n' "$EXPORT_LINE" >> "$PROFILE"
+                echo "Menambahkan $INSTALL_DIR ke $PROFILE. Jalankan: source $PROFILE"
+            fi
+        else
+            echo ""
+            echo "Tambahkan folder ini ke PATH shell Anda jika perintah 'sign' belum dikenali:"
+            echo "  $EXPORT_LINE"
+        fi
         ;;
 esac

@@ -1,16 +1,14 @@
 # Sarjana Terapan Informatika
 Daftar Kode Dosen :
-- TI126L (yusril)
-- TI122L (kamal)
-- TI041L (woro)
-- NN258L (roni andarsyah)
-- TI117L (roni habibi) 
-- TI125L (fachrie)
-- LB053L (nuraini)
-- NN257L (rolly)
-- NN225L (novi)
-- NN222L (nisa)
-- NN056L (cahyo)
+- RAN (Roni Andarsyah, S.T., M.Kom.)
+- MYH (M. Yusril Helmi Setyawan, S.Kom., M.Kom.)
+- RMA (Rolly Maulana Awangga, S.T., M.T., CAIP.)
+- MNF (Dr. Mohamad Nurkamal Fauzan, S.T., M.T.)
+- CPY (Cahyo Prianto, S.Pd., M.T.)
+- SFP (Dr. Syafrial Fachri Pane, S.T., M.T.I., EBDP., CDSP.)
+- RHA (Roni Habibi, S.Kom., M.T.)
+- NHH (Nisa Hanum Harani, S.Kom., M.T., CDSP.)
+- RNS (Rd. Nuraini Siti Fathonah, S.S., M.Hum.)
 
 ## Dokeumen Akreditasi
 - [Drive Akreditasi](https://drive.google.com/drive/folders/1VnZuSPDStPSC0LYdRi4WW3O0_IrZQTKe?usp=sharing)

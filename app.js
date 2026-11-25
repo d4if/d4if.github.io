@@ -5,15 +5,15 @@ import { toastError, toastInfo, toastSuccess, toastWarning } from "https://cdn.j
 const THEME_KEY = "d4if-color-mode";
 
 const LECTURERS = [
-    { code: "TI126L", name: "M. Yusril Helmi Setyawan, S.Kom., M.Kom." },
-    { code: "TI122L", name: "Dr. Mohamad Nurkamal Fauzan, S.T., M.T." },
-    { code: "NN258L", name: "Roni Andarsyah, S.T., M.Kom." },
-    { code: "TI117L", name: "Roni Habibi, S.Kom., M.T." },
-    { code: "TI125L", name: "Dr. Syafrial Fachri Pane, S.T., M.T.I., EBDP., CDSP." },
-    { code: "LB053L", name: "Rd. Nuraini Siti Fathonah, S.S., M.Hum." },
-    { code: "NN257L", name: "Rolly Maulana Awangga, S.T., M.T., CAIP." },
-    { code: "NN222L", name: "Nisa Hanum Harani, S.Kom., M.T., CDSP." },
-    { code: "NN056L", name: "Cahyo Prianto, S.Pd., M.T." }
+    { code: "RAN", name: "Roni Andarsyah, S.T., M.Kom." },
+    { code: "MYH", name: "M. Yusril Helmi Setyawan, S.Kom., M.Kom." },
+    { code: "RMA", name: "Rolly Maulana Awangga, S.T., M.T., CAIP." },
+    { code: "MNF", name: "Dr. Mohamad Nurkamal Fauzan, S.T., M.T." },
+    { code: "CPY", name: "Cahyo Prianto, S.Pd., M.T." },
+    { code: "SFP", name: "Dr. Syafrial Fachri Pane, S.T., M.T.I., EBDP., CDSP." },
+    { code: "RHA", name: "Roni Habibi, S.Kom., M.T." },
+    { code: "NHH", name: "Nisa Hanum Harani, S.Kom., M.T., CDSP." },
+    { code: "RNS", name: "Rd. Nuraini Siti Fathonah, S.S., M.Hum." }
 ];
 
 function escapeHTML(value) {

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="id" data-croot-theme="kampus">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Repositori &amp; Validasi D4TI ULBI</title>
+  <meta name="description" content="Portal resmi Program Studi Sarjana Terapan Teknik Informatika ULBI: verifikasi dokumen digital PASETO v4.public, arsip akreditasi, dan direktori kode dosen.">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
+  <link rel="manifest" href="/assets/img/site.webmanifest">
+
+  <script src="integrity.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/crootjs/lib@0.0.42/croot.css" integrity="sha384-cRZnPfqfc8A4ScSrJvvc1Fwf3GlvriswRMmEvn1/1pvlGcoEQHsPoukUjRuJpeKU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/crootjs/lib@0.0.42/ui.css" integrity="sha384-lXsaXJ15GWV1PH27TR2xeLoV6sq9JfiIq2tavwPtSoZzdO9aaHyAytURJbx2PqGp" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/crootjs/lib@0.0.42/themes.css" integrity="sha384-k+Tiqfub/UMoEE2DRsO2hm6N8M8QqfSh+vqHl3A8vYB5KeZ3bJYbFWKK8MzfFc+b" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/crootjs/lib@0.0.42/icons.css" integrity="sha384-bBSC1493rmiP8EHePNTRzk5+NlljyRP4fNCoGFs36sypHBYMV2fztDEsys/XO6/H" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/gh/crootjs/lib@0.0.42/element.min.js" integrity="sha384-6N+HI8HAMAoIP/QFZna5dQ5InvK/mipiijjWEWJIiJOX/simqIO4fLvZSQMbUp9f" crossorigin="anonymous">
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/gh/crootjs/lib@0.0.42/storage.min.js" integrity="sha384-I68UpwZkgCfB4R68KBk7oSjwdRZqI+8zHf73gCvG+J2YFk5fxD3kBQjgt45dGk0Z" crossorigin="anonymous">
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/gh/crootjs/lib@0.0.42/toast.min.js" integrity="sha384-F6CVYciiH723TqgIYwzLHsrZWnFHw3sVXzcsyeP9XEzVHFL/CHvZDfYeFpdQ6is1" crossorigin="anonymous">
+
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#konten-utama">Lewati ke konten utama</a>
+
+  <header class="container nav">
+    <a class="brand" href="/">
+      <strong>D4TI ULBI</strong>
+      <span class="brand-sub">Sarjana Terapan Informatika</span>
+    </a>
+    <nav aria-label="Navigasi utama">
+      <ul>
+        <li><a href="#layanan">Perangkat</a></li>
+        <li><a href="#akreditasi">Akreditasi</a></li>
+        <li><a href="#dosen">Daftar Dosen</a></li>
+        <li><a href="/validate/">Validator QR</a></li>
+        <li><button type="button" id="theme-toggle" class="secondary">Mode Tampilan</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="konten-utama" class="container page-main">
+    <section class="hero" aria-labelledby="hero-judul">
+      <div class="hero-copy stack">
+        <h1 id="hero-judul">Portal Repositori dan Verifikasi Dokumen D4TI ULBI</h1>
+        <p class="lead">Pusat rujukan publik Program Studi Sarjana Terapan Teknik Informatika ULBI untuk validasi tanda tangan digital dokumen, arsip dokumen akreditasi LAM INFOKOM, dan direktori kode dosen pengampu.</p>
+        <div class="cluster">
+          <a class="button" href="/validate/">
+            <span class="icon icon-check" aria-hidden="true"></span>Buka Validator Dokumen
+          </a>
+          <a class="button secondary" href="#akreditasi">
+            <span class="icon icon-folder" aria-hidden="true"></span>Lihat Arsip Akreditasi
+          </a>
+        </div>
+      </div>
+
+      <aside class="card stack quick-panel" aria-labelledby="quick-panel-judul">
+        <h2 id="quick-panel-judul">Periksa Token atau Tautan QR</h2>
+        <p class="muted field-note">Tempel token <code>v4.public.*</code> atau URL hasil pemindaian QR untuk membuka halaman hasil validasi.</p>
+
+        <form id="quick-verify-form" class="stack" novalidate>
+          <div>
+            <label for="quick-token-input">Token PASETO atau URL Validator</label>
+            <input type="text" id="quick-token-input" placeholder="v4.public.... atau https://.../validate/#token=..." autocomplete="off" spellcheck="false" required>
+            <p id="quick-token-error" class="field-error" hidden></p>
+          </div>
+          <div class="cluster">
+            <button type="submit" id="quick-verify-submit">Validasi di Validator</button>
+          </div>
+        </form>
+
+        <div class="pubkey-box stack">
+          <div class="pubkey-head">
+            <span class="pubkey-label">Kunci Publik Resmi Prodi (PASERK)</span>
+            <button type="button" id="copy-pubkey-btn" class="ghost copy-btn">
+              <span class="icon icon-copy" aria-hidden="true"></span>Salin Kunci
+            </button>
+          </div>
+          <code id="official-pubkey" class="pubkey-code">k4.public.Dyy-6DQF5q4jSs36USkBUOdlD8YScsjx_OKnw0WWOYE</code>
+        </div>
+      </aside>
+    </section>
+
+    <section id="layanan" class="section-block" aria-labelledby="layanan-judul">
+      <div class="section-head">
+        <h2 id="layanan-judul">Ekosistem Tanda Tangan Digital</h2>
+        <p class="muted">Dokumen resmi program studi ditandatangani dengan algoritma Ed25519 (PASETO <code>v4.public</code>) agar keasliannya dapat diperiksa langsung di browser tanpa server perantara.</p>
+      </div>
+
+      <div class="tool-split">
+        <article class="card stack tool-primary">
+          <div class="tool-header">
+            <h3>Validator Dokumen (<code>d4if/validate</code>)</h3>
+            <span class="badge">Aktif di Browser</span>
+          </div>
+          <p>Memverifikasi tanda tangan digital dari QR Code, gambar SVG/PNG/JPG, maupun berkas asli melalui perbandingan hash SHA-256 secara lokal dengan kunci publik resmi yang tertanam di aplikasi.</p>
+          <div class="cluster">
+            <a class="button" href="/validate/">Buka Halaman Validator</a>
+            <a class="button secondary" href="https://github.com/d4if/validate" target="_blank" rel="noopener noreferrer">Kode Sumber Validator</a>
+          </div>
+        </article>
+
+        <article class="card stack tool-secondary">
+          <div class="tool-header">
+            <h3>Generator Tanda Tangan (<code>d4if/sign</code>)</h3>
+            <span class="badge">CLI Rust</span>
+          </div>
+          <p>Utilitas baris perintah untuk membuat pasangan kunci Ed25519, menghitung hash SHA-256 dokumen, dan menghasilkan QR Code yang langsung mengarah ke validator GitHub Pages.</p>
+          <pre class="cli-snippet"><code>sign sign --file surat.pdf --issuer "Prodi D4TI ULBI" --out qr.svg</code></pre>
+          <div class="cluster">
+            <a class="button secondary" href="https://github.com/d4if/sign" target="_blank" rel="noopener noreferrer">Repositori Sign</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="akreditasi" class="section-block" aria-labelledby="akreditasi-judul">
+      <div class="section-head">
+        <h2 id="akreditasi-judul">Dokumen Akreditasi</h2>
+        <p class="muted">Tautan langsung ke folder dan berkas acuan akreditasi program studi pada Google Drive.</p>
+      </div>
+
+      <div class="doc-list">
+        <a class="doc-row" href="https://drive.google.com/drive/folders/1VnZuSPDStPSC0LYdRi4WW3O0_IrZQTKe?usp=sharing" target="_blank" rel="noopener noreferrer">
+          <div class="doc-main">
+            <span class="icon icon-folder" aria-hidden="true"></span>
+            <div>
+              <strong>Drive Akreditasi Prodi D4TI</strong>
+              <p class="muted">Direktori utama berkas akreditasi Program Studi Sarjana Terapan Teknik Informatika.</p>
+            </div>
+          </div>
+          <span class="doc-action">Buka Drive</span>
+        </a>
+
+        <a class="doc-row" href="https://drive.google.com/file/d/1znDqT855ytx6fM5o4BQliHlOqEwcgtbi/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+          <div class="doc-main">
+            <span class="icon icon-file" aria-hidden="true"></span>
+            <div>
+              <strong>Dokumen Standar Akreditasi</strong>
+              <p class="muted">Dokumen rujukan standar penilaian program studi.</p>
+            </div>
+          </div>
+          <span class="doc-action">Buka Berkas</span>
+        </a>
+
+        <a class="doc-row" href="https://drive.google.com/file/d/1iOo-fK7wDI6ft_pv80YnKN4AovC6NMo7/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+          <div class="doc-main">
+            <span class="icon icon-file" aria-hidden="true"></span>
+            <div>
+              <strong>Matriks Penilaian LAM INFOKOM (Halaman 65)</strong>
+              <p class="muted">Acuan poin penilaian instrumen akreditasi LAM INFOKOM pada halaman 65.</p>
+            </div>
+          </div>
+          <span class="doc-action">Buka Berkas</span>
+        </a>
+      </div>
+
+      <p class="muted criteria-note">Catatan kriteria: dokumen rinci untuk kriteria <strong>Pendidikan</strong> dan <strong>Penelitian</strong> akan ditautkan setelah halaman masing-masing tersedia.</p>
+    </section>
+
+    <section id="dosen" class="section-block" aria-labelledby="dosen-judul">
+      <div class="section-head dosen-head">
+        <div>
+          <h2 id="dosen-judul">Daftar Kode Dosen</h2>
+          <p class="muted">Daftar resmi kode pengampu dan penanda tangan dokumen di Program Studi D4 Teknik Informatika ULBI.</p>
+        </div>
+        <div class="dosen-filter">
+          <label for="dosen-search">Cari kode atau nama dosen</label>
+          <div class="cluster">
+            <input type="search" id="dosen-search" placeholder="Contoh: NN257L atau Rolly">
+            <button type="button" id="dosen-clear-btn" class="ghost" hidden>Bersihkan</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="dosen-empty" class="empty" hidden>
+        <span class="icon icon-search" aria-hidden="true"></span>
+        <h3>Tidak ada kode dosen yang cocok</h3>
+        <p>Periksa kembali ejaan kode atau nama dosen, atau bersihkan kolom pencarian untuk menampilkan seluruh daftar.</p>
+      </div>
+
+      <div id="dosen-table-wrap" class="table-wrap">
+        <table class="dosen-table">
+          <thead>
+            <tr>
+              <th scope="col">Kode Dosen</th>
+              <th scope="col">Nama</th>
+              <th scope="col">Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="dosen-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container site-footer">
+    <p>Program Studi Sarjana Terapan Teknik Informatika ULBI. Konten awal oleh <a href="https://twitter.com/awangga" target="_blank" rel="noopener noreferrer">Rolly Maulana Awangga</a>.</p>
+    <ul>
+      <li><a href="/validate/">Validator QR</a></li>
+      <li><a href="https://github.com/d4if" target="_blank" rel="noopener noreferrer">GitHub @d4if</a></li>
+    </ul>
+  </footer>
+</body>
+</html>

@@ -1,3 +1,7 @@
+[hidden] {
+    display: none !important;
+}
+
 .skip-link {
     position: absolute;
     left: -9999px;

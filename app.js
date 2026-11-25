@@ -158,6 +158,15 @@ function init() {
             copyText(code, `Kode dosen ${code} disalin.`);
         }
     });
+
+    document.addEventListener("click", (event) => {
+        const btn = event.target.closest("button[data-copy-text]");
+        if (!btn) return;
+        const text = btn.getAttribute("data-copy-text");
+        if (text) {
+            copyText(text, "Perintah disalin ke clipboard.");
+        }
+    });
 }
 
 init();

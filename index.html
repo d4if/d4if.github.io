@@ -35,6 +35,7 @@
     <nav aria-label="Navigasi utama">
       <ul>
         <li><a href="#layanan">Perangkat</a></li>
+        <li><a href="#cara-sign">Cara Signing</a></li>
         <li><a href="#akreditasi">Akreditasi</a></li>
         <li><a href="#dosen">Daftar Dosen</a></li>
         <li><a href="/validate/">Validator QR</a></li>
@@ -110,12 +111,74 @@
             <span class="badge">CLI Rust</span>
           </div>
           <p>Utilitas baris perintah untuk membuat pasangan kunci Ed25519, menghitung hash SHA-256 dokumen, dan menghasilkan QR Code yang langsung mengarah ke validator GitHub Pages.</p>
-          <pre class="cli-snippet"><code>sign sign --file surat.pdf --issuer "Prodi D4TI ULBI" --out qr.svg</code></pre>
+          <pre class="cli-snippet"><code>sign sign --file surat.pdf --issuer "Prodi D4TI ULBI" --footer "d4if-ulbi-2026" --out qr.svg</code></pre>
           <div class="cluster">
             <a class="button secondary" href="https://github.com/d4if/sign" target="_blank" rel="noopener noreferrer">Repositori Sign</a>
+            <a class="button ghost" href="#cara-sign">Lihat Tata Cara Signing</a>
           </div>
         </article>
       </div>
+    </section>
+
+    <section id="cara-sign" class="section-block" aria-labelledby="cara-sign-judul">
+      <div class="section-head">
+        <h2 id="cara-sign-judul">Tata Cara Signing Dokumen</h2>
+        <p class="muted">Panduan menandatangani dokumen PDF atau berkas resmi dengan CLI <code>sign</code> agar QR Code langsung tervalidasi di <a href="/validate/">repo.if.ulbi.ac.id/validate/</a> tanpa memasukkan kunci publik secara manual.</p>
+      </div>
+
+      <ol class="sign-guide">
+        <li class="card stack guide-item">
+          <div class="guide-head">
+            <h3>1. Unduh atau Kompilasi Binary <code>sign</code></h3>
+            <a class="button secondary" href="https://github.com/d4if/sign/releases" target="_blank" rel="noopener noreferrer">Unduh Rilis</a>
+          </div>
+          <p>Ambil binary sesuai sistem operasi (Linux, Windows, atau macOS) dari halaman GitHub Releases, atau kompilasi dari source Rust:</p>
+          <div class="cmd-block">
+            <pre class="cli-snippet"><code>git clone https://github.com/d4if/sign.git &amp;&amp; cd sign &amp;&amp; cargo build --release</code></pre>
+            <button type="button" class="ghost copy-btn" data-copy-text="git clone https://github.com/d4if/sign.git &amp;&amp; cd sign &amp;&amp; cargo build --release">Salin</button>
+          </div>
+        </li>
+
+        <li class="card stack guide-item">
+          <div class="guide-head">
+            <h3>2. Siapkan Kunci Penanda Tangan</h3>
+          </div>
+          <p>Untuk dokumen resmi Prodi D4TI ULBI, gunakan berkas <code>signing.key</code> resmi yang dipasangkan dengan kunci publik tertanam (<code>kid: d4if-ulbi-2026</code>). Jika membuat pasangan kunci baru untuk pengujian atau unit mandiri:</p>
+          <div class="cmd-block">
+            <pre class="cli-snippet"><code>sign keygen --secret-out signing.key --public-out verifying.key</code></pre>
+            <button type="button" class="ghost copy-btn" data-copy-text="sign keygen --secret-out signing.key --public-out verifying.key">Salin</button>
+          </div>
+          <p class="muted field-note">Simpan <code>signing.key</code> secara privat dan jangan pernah dikirim ke repositori publik.</p>
+        </li>
+
+        <li class="card stack guide-item">
+          <div class="guide-head">
+            <h3>3. Tandatangani Dokumen dan Buat QR Code</h3>
+          </div>
+          <p>Jalankan perintah berikut pada berkas dokumen yang akan disahkan. Secara default, <code>sign</code> memakai <code>signing.key</code> di direktori kerja dan membungkus token ke URL validator resmi.</p>
+          <div class="cmd-block">
+            <pre class="cli-snippet"><code>sign sign --file surat.pdf --issuer "Prodi D4TI ULBI" --signer "NN257L" --doc-id "SK-2026-001" --subject "Surat Keterangan" --footer "d4if-ulbi-2026" --out signature-qr.svg</code></pre>
+            <button type="button" class="ghost copy-btn" data-copy-text='sign sign --file surat.pdf --issuer "Prodi D4TI ULBI" --signer "NN257L" --doc-id "SK-2026-001" --subject "Surat Keterangan" --footer "d4if-ulbi-2026" --out signature-qr.svg'>Salin</button>
+          </div>
+          <dl class="flag-list">
+            <div><dt><code>--key</code></dt><dd>Path kunci privat atau env <code>PASETO_SECRET_KEY</code> (default: <code>signing.key</code>).</dd></div>
+            <div><dt><code>--out</code></dt><dd>Keluaran QR Code dalam format <code>.svg</code>, <code>.png</code>, atau <code>.txt</code>.</dd></div>
+            <div><dt><code>--ttl</code></dt><dd>Masa berlaku opsional, misalnya <code>30m</code>, <code>24h</code>, atau <code>365d</code> (default permanen).</dd></div>
+            <div><dt><code>--token-out</code></dt><dd>Menyimpan string token mentah <code>v4.public.*</code> ke berkas teks untuk arsip.</dd></div>
+          </dl>
+        </li>
+
+        <li class="card stack guide-item">
+          <div class="guide-head">
+            <h3>4. Sematkan QR ke Dokumen dan Uji Validasi</h3>
+          </div>
+          <p>Tempelkan berkas <code>signature-qr.svg</code> atau <code>signature-qr.png</code> ke dokumen sebelum diedarkan. Saat dipindai kamera ponsel, QR langsung membuka halaman <a href="/validate/">Validator QR</a> dan memverifikasi tanda tangan secara otomatis. Untuk pemeriksaan dari terminal:</p>
+          <div class="cmd-block">
+            <pre class="cli-snippet"><code>sign verify --public-key verifying.key --token signature.paseto --file surat.pdf</code></pre>
+            <button type="button" class="ghost copy-btn" data-copy-text="sign verify --public-key verifying.key --token signature.paseto --file surat.pdf">Salin</button>
+          </div>
+        </li>
+      </ol>
     </section>
 
     <section id="akreditasi" class="section-block" aria-labelledby="akreditasi-judul">

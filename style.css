@@ -156,6 +156,76 @@
     font-size: 0.85rem;
 }
 
+.sign-guide {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--croot-space);
+}
+
+.guide-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.guide-head h3 {
+    margin: 0;
+}
+
+.cmd-block {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.65rem 0.85rem;
+    border: 1px solid var(--croot-border);
+    border-radius: var(--croot-radius);
+    background-color: var(--croot-bg);
+}
+
+.cmd-block .cli-snippet {
+    flex: 1 1 16rem;
+    min-width: 0;
+    border: 0;
+    padding: 0;
+    background: transparent;
+}
+
+.flag-list {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.5rem 1.25rem;
+    margin: 0;
+}
+
+@media (min-width: 48rem) {
+    .flag-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.flag-list > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.flag-list dt {
+    font-weight: 600;
+}
+
+.flag-list dd {
+    margin: 0;
+    color: var(--croot-muted);
+    font-size: 0.9rem;
+}
+
 .doc-list {
     display: flex;
     flex-direction: column;

@@ -5,17 +5,15 @@ import { toastError, toastInfo, toastSuccess, toastWarning } from "https://cdn.j
 const THEME_KEY = "d4if-color-mode";
 
 const LECTURERS = [
-    { code: "TI126L", name: "Yusril" },
-    { code: "TI122L", name: "Kamal" },
-    { code: "TI041L", name: "Woro" },
-    { code: "NN258L", name: "Roni Andarsyah" },
-    { code: "TI117L", name: "Roni Habibi" },
-    { code: "TI125L", name: "Fachrie" },
-    { code: "LB053L", name: "Nuraini" },
-    { code: "NN257L", name: "Rolly" },
-    { code: "NN225L", name: "Novi" },
-    { code: "NN222L", name: "Nisa" },
-    { code: "NN056L", name: "Cahyo" }
+    { code: "TI126L", name: "M. Yusril Helmi Setyawan, S.Kom., M.Kom." },
+    { code: "TI122L", name: "Dr. Mohamad Nurkamal Fauzan, S.T., M.T." },
+    { code: "NN258L", name: "Roni Andarsyah, S.T., M.Kom." },
+    { code: "TI117L", name: "Roni Habibi, S.Kom., M.T." },
+    { code: "TI125L", name: "Dr. Syafrial Fachri Pane, S.T., M.T.I., EBDP., CDSP." },
+    { code: "LB053L", name: "Rd. Nuraini Siti Fathonah, S.S., M.Hum." },
+    { code: "NN257L", name: "Rolly Maulana Awangga, S.T., M.T., CAIP." },
+    { code: "NN222L", name: "Nisa Hanum Harani, S.Kom., M.T., CDSP." },
+    { code: "NN056L", name: "Cahyo Prianto, S.Pd., M.T." }
 ];
 
 function escapeHTML(value) {

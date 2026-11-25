@@ -1,9 +1,8 @@
-import { getValue, onClick, setInner } from "https://cdn.jsdelivr.net/gh/crootjs/lib@0.0.42/element.min.js";
+import { onClick, setInner } from "https://cdn.jsdelivr.net/gh/crootjs/lib@0.0.42/element.min.js";
 import { getLocal, setLocal } from "https://cdn.jsdelivr.net/gh/crootjs/lib@0.0.42/storage.min.js";
 import { toastError, toastInfo, toastSuccess, toastWarning } from "https://cdn.jsdelivr.net/gh/crootjs/lib@0.0.42/toast.min.js";
 
 const THEME_KEY = "d4if-color-mode";
-const OFFICIAL_PUBLIC_KEY = "k4.public.Dyy-6DQF5q4jSs36USkBUOdlD8YScsjx_OKnw0WWOYE";
 
 const LECTURERS = [
     { code: "TI126L", name: "Yusril" },
@@ -59,39 +58,6 @@ async function copyText(value, successMsg) {
     }
 }
 
-function extractToken(rawInput) {
-    const trimmed = String(rawInput || "").trim();
-    if (!trimmed) return null;
-    if (trimmed.startsWith("v4.public.")) return trimmed;
-    const paramMatch = trimmed.match(/(?:[?#&]|^)token=([^&#\s]+)/);
-    if (paramMatch) {
-        const decoded = decodeURIComponent(paramMatch[1]).trim();
-        if (decoded.startsWith("v4.public.")) return decoded;
-    }
-    const hashMatch = trimmed.match(/#(v4\.public\.[^&#\s]+)/);
-    if (hashMatch) {
-        return decodeURIComponent(hashMatch[1]).trim();
-    }
-    return null;
-}
-
-function handleQuickVerifySubmit(event) {
-    event.preventDefault();
-    const errorEl = document.getElementById("quick-token-error");
-    const raw = getValue("quick-token-input");
-    const token = extractToken(raw);
-
-    if (!token) {
-        errorEl.textContent = "Masukkan token v4.public.* atau URL validator yang memuat parameter token=.";
-        errorEl.hidden = false;
-        toastWarning("Format token PASETO belum sesuai.", 2500);
-        return;
-    }
-
-    errorEl.hidden = true;
-    window.location.href = `/validate/#token=${encodeURIComponent(token)}`;
-}
-
 function renderLecturers(filterText = "") {
     const query = filterText.trim().toLowerCase();
     const tbody = document.getElementById("dosen-tbody");
@@ -131,12 +97,6 @@ function init() {
     renderLecturers("");
 
     onClick("theme-toggle", toggleColorMode);
-    onClick("copy-pubkey-btn", () => copyText(OFFICIAL_PUBLIC_KEY, "Public key resmi disalin."));
-
-    document.getElementById("quick-verify-form").addEventListener("submit", handleQuickVerifySubmit);
-    document.getElementById("quick-token-input").addEventListener("input", () => {
-        document.getElementById("quick-token-error").hidden = true;
-    });
 
     const searchInput = document.getElementById("dosen-search");
     searchInput.addEventListener("input", (event) => {

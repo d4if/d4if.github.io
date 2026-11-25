@@ -60,28 +60,35 @@
       </div>
 
       <aside class="card stack quick-panel" aria-labelledby="quick-panel-judul">
-        <h2 id="quick-panel-judul">Periksa Token atau Tautan QR</h2>
-        <p class="muted field-note">Tempel token <code>v4.public.*</code> atau URL hasil pemindaian QR untuk membuka halaman hasil validasi.</p>
+        <h2 id="quick-panel-judul">Panduan Cepat <code>sign</code></h2>
+        <p class="muted field-note">Pasang CLI <code>sign</code> di laptop, lalu tandatangani dokumen PDF untuk menghasilkan QR Code yang langsung valid di <a href="/validate/">Validator QR</a>.</p>
 
-        <form id="quick-verify-form" class="stack" novalidate>
-          <div>
-            <label for="quick-token-input">Token PASETO atau URL Validator</label>
-            <input type="text" id="quick-token-input" placeholder="v4.public.... atau https://.../validate/#token=..." autocomplete="off" spellcheck="false" required>
-            <p id="quick-token-error" class="field-error" hidden></p>
+        <div class="stack install-option">
+          <span class="install-label">1. Pasang CLI (macOS / Linux)</span>
+          <div class="cmd-block">
+            <pre class="cli-snippet"><code>curl -fsSL https://repo.if.ulbi.ac.id/install.sh | sh</code></pre>
+            <button type="button" class="ghost copy-btn" data-copy-text="curl -fsSL https://repo.if.ulbi.ac.id/install.sh | sh">Salin</button>
           </div>
-          <div class="cluster">
-            <button type="submit" id="quick-verify-submit">Validasi di Validator</button>
-          </div>
-        </form>
+        </div>
 
-        <div class="pubkey-box stack">
-          <div class="pubkey-head">
-            <span class="pubkey-label">Kunci Publik Resmi Prodi (PASERK)</span>
-            <button type="button" id="copy-pubkey-btn" class="ghost copy-btn">
-              <span class="icon icon-copy" aria-hidden="true"></span>Salin Kunci
-            </button>
+        <div class="stack install-option">
+          <span class="install-label">2. Pasang CLI (Windows PowerShell)</span>
+          <div class="cmd-block">
+            <pre class="cli-snippet"><code>irm https://repo.if.ulbi.ac.id/install.ps1 | iex</code></pre>
+            <button type="button" class="ghost copy-btn" data-copy-text="irm https://repo.if.ulbi.ac.id/install.ps1 | iex">Salin</button>
           </div>
-          <code id="official-pubkey" class="pubkey-code">k4.public.Dyy-6DQF5q4jSs36USkBUOdlD8YScsjx_OKnw0WWOYE</code>
+        </div>
+
+        <div class="stack install-option">
+          <span class="install-label">3. Tandatangani Dokumen</span>
+          <div class="cmd-block">
+            <pre class="cli-snippet"><code>sign sign --file surat.pdf --issuer "Prodi D4TI ULBI" --footer "d4if-ulbi-2026" --out qr.svg</code></pre>
+            <button type="button" class="ghost copy-btn" data-copy-text='sign sign --file surat.pdf --issuer "Prodi D4TI ULBI" --footer "d4if-ulbi-2026" --out qr.svg'>Salin</button>
+          </div>
+        </div>
+
+        <div class="cluster">
+          <a class="button secondary" href="#cara-sign">Lihat Panduan Lengkap Signing</a>
         </div>
       </aside>
     </section>
